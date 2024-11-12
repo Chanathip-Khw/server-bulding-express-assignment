@@ -1,6 +1,7 @@
 import express from "express";
 import connectionPool from "./utils/db.mjs";
 import cors from "cors";
+import { validateCreateAndEditPostData } from "./middlewares/postAndPutValidation.mjs";
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -95,7 +96,7 @@ app.get("/posts/:postId", async (req, res) => {
   }
 });
 
-app.post("/posts", async (req, res) => {
+app.post("/posts",[validateCreateAndEditPostData], async (req, res) => {
   const newPost = {
     ...req.body,
   };
@@ -124,7 +125,7 @@ app.post("/posts", async (req, res) => {
   });
 });
 
-app.put("/posts/:postId", async (req, res) => {
+app.put("/posts/:postId",[validateCreateAndEditPostData] ,async (req, res) => {
   try {
     const postIdFromClient = req.params.postId;
     const updatedPost = { ...req.body, date: new Date() };

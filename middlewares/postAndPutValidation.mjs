@@ -1,5 +1,5 @@
 export const validateCreateAndEditPostData = (req, res, next) => {
-  if (!typeof req.body.title === "string") {
+  if (typeof req.body.title !== "string") {
     return res.status(400).json({
       message: "Title must be a string",
     });
@@ -11,7 +11,7 @@ export const validateCreateAndEditPostData = (req, res, next) => {
     });
   }
 
-  if (!typeof req.body.image === "string") {
+  if (typeof req.body.image !== "string") {
     return res.status(400).json({
       message: "Image must be a string",
     });
@@ -23,7 +23,7 @@ export const validateCreateAndEditPostData = (req, res, next) => {
     });
   }
 
-  if (!typeof req.body.category_id === "number") {
+  if (typeof req.body.category_id !== "number") {
     return res.status(400).json({
       message: "Image must be a number",
     });
@@ -35,7 +35,7 @@ export const validateCreateAndEditPostData = (req, res, next) => {
     });
   }
 
-  if (!typeof req.description === "string") {
+  if (typeof req.body.description !== "string") {
     return res.status(400).json({
       message: "Description must be a string",
     });
@@ -47,7 +47,7 @@ export const validateCreateAndEditPostData = (req, res, next) => {
     });
   }
 
-  if (!typeof req.content === "string") {
+  if (typeof req.body.content !== "string") {
     return res.status(400).json({
       message: "Content must be a string",
     });
@@ -59,7 +59,7 @@ export const validateCreateAndEditPostData = (req, res, next) => {
     });
   }
 
-  if (!typeof req.status_id === "number") {
+  if (typeof req.body.status_id !== "number") {
     return res.status(400).json({
       message: "Status ID must be a number",
     });
